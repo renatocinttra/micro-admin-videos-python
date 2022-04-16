@@ -8,6 +8,7 @@
 	// The .devcontainer/docker-compose.yml file contains any overrides you need/want to make.
 	"dockerComposeFile": [
 		"../docker-compose.yaml",
+		"../docker-compose.override.yaml",
 		"docker-compose.yml"
 	],
 
@@ -21,24 +22,7 @@
 
 	// Set *default* container specific settings.json values on container create.
 	"settings": {
-		"files.watcherExclude": {
-			"**/__pycache__": true
-		},
-		"search.exclude": {
-			"**/__pycache__": true
-		},
-		"python.linting.ignorePatterns": [
-			"**/site-packages/**/*.py",
-			".vscode/*.py",
-			"**/__pycache__"
-		],
-		"workbench.localHistory.exclude": {
-			"**/__pycache__": true
-		},
-		"files.exclude": {
-			"**/__pycache__": true
-		},
-		"terminal.integrated.defaultProfile.linux": "bash"
+		"terminal.integrated.defaultProfile.linux": "zsh"
 	},
 
 	// Add the IDs of extensions you want installed when the container is created.
