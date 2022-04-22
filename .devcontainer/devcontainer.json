@@ -36,7 +36,8 @@
 		"sourcery.sourcery",
 		"aemodio.gitlens",
 		"donjayamanne.githistory",
-		"vivaxy.vscode-conventional-commits"
+		"vivaxy.vscode-conventional-commits",
+		"pkief.material-icon-theme"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
