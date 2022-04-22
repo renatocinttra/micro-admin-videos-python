@@ -1,6 +1,6 @@
 import unittest
 from datetime import datetime
-from dataclasses import is_dataclass
+from dataclasses import FrozenInstanceError, is_dataclass
 from category.domain.entities import Category
 
 #TDD - Triple AAA (Arrange, Act and Assert)
@@ -35,6 +35,11 @@ class TestCategoryUnit(unittest.TestCase):
             category1.created_at.timestamp(),
             category2.created_at.timestamp()
         )
+
+    def test_id_immutable(self):
+        with self.assertRaises(FrozenInstanceError):
+            value_object = Category(name='test')
+            value_object.name = 'alter test name'
 
 
 # TDD - Kent Beck (Circle: Create the Test >>> Fail >>> Success >>> Refactor)

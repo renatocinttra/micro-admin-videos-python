@@ -4,7 +4,7 @@ from datetime import datetime
 from dataclasses import dataclass, field # 3.10 - DataClass
 from typing import Optional
 
-@dataclass(kw_only=True) #init, repr, eq
+@dataclass(kw_only=True, frozen=True) #init, repr, eq
 
 class Category: # Constructor
 

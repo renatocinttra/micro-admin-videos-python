@@ -4,7 +4,7 @@ import uuid
 from dataclasses import dataclass, field
 from __seedwork.domain.exceptions import InvalidUuidException
 
-@dataclass()
+@dataclass(frozen=True)
 class UniqueEntityId:
 
     id: str = field(
@@ -12,7 +12,8 @@ class UniqueEntityId:
     )
 
     def __post_init__(self):
-        self.id = str(self.id) if isinstance(self.id, uuid.UUID) else self.id
+        id_value = str(self.id) if isinstance(self.id, uuid.UUID) else self.id
+        object.__setattr__(self, 'id', id_value)
         self.__validate()
 
     def __validate(self):
