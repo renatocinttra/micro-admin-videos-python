@@ -1,16 +1,13 @@
 # sourcery skip: avoid-builtin-shadow
-import uuid
+
 from datetime import datetime
 from dataclasses import dataclass, field # 3.10 - DataClass
 from typing import Optional
+from __seedwork.domain.entities import Entity
 
 @dataclass(kw_only=True, frozen=True) #init, repr, eq
 
-class Category: # Constructor
-
-    id: uuid.UUID = field(
-        default_factory=lambda: uuid.uuid4() # Create the instance without reapeat id
-    )
+class Category(Entity): # Constructor
     name: str
     description: Optional[str] = None
     is_active: Optional[bool] = True
