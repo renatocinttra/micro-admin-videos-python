@@ -1,3 +1,5 @@
+# pylint: disable=protected-access
+
 import unittest
 import uuid
 from abc import ABC
@@ -6,14 +8,17 @@ from unittest.mock import patch
 from __seedwork.domain.exceptions import InvalidUuidException
 from __seedwork.domain.value_objects import UniqueEntityId, ValueObject
 
+
 @dataclass(frozen=True)
 class StubOneProp(ValueObject):
     prop: str
+
 
 @dataclass(frozen=True)
 class StubTwoProp(ValueObject):
     prop1: str
     prop2: str
+
 
 class TestValueObjectUnit(unittest.TestCase):
 
@@ -41,7 +46,8 @@ class TestValueObjectUnit(unittest.TestCase):
     def test_is_immutable(self):
         with self.assertRaises(FrozenInstanceError):
             value_object = StubOneProp(prop='value')
-            value_object.prop = 'fake' 
+            value_object.prop = 'fake'
+
 
 class TestUniqueEntityIdUnit(unittest.TestCase):
 
@@ -58,7 +64,8 @@ class TestUniqueEntityIdUnit(unittest.TestCase):
             with self.assertRaises(InvalidUuidException) as assert_error:
                 UniqueEntityId('fake id')
             mock_validate.assert_called_once()
-            self.assertEqual(assert_error.exception.args[0], 'ID must be a valid UUID')
+            self.assertEqual(
+                assert_error.exception.args[0], 'ID must be a valid UUID')
 
     def test_accept_uuid_passed_in_constructor(self):
         with patch.object(
@@ -67,9 +74,11 @@ class TestUniqueEntityIdUnit(unittest.TestCase):
             autospec=True,
             side_effect=UniqueEntityId._UniqueEntityId__validate
         ) as mock_validate:
-            value_object = UniqueEntityId('df7aae27-1738-40e2-b410-1eae5d6bf6e4')
+            value_object = UniqueEntityId(
+                'df7aae27-1738-40e2-b410-1eae5d6bf6e4')
             mock_validate.assert_called_once()
-            self.assertEqual(value_object.id, 'df7aae27-1738-40e2-b410-1eae5d6bf6e4')
+            self.assertEqual(
+                value_object.id, 'df7aae27-1738-40e2-b410-1eae5d6bf6e4')
 
         uuid_value = uuid.uuid4()
         value_object = UniqueEntityId(uuid_value)

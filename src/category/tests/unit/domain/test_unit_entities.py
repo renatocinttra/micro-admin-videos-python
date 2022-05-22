@@ -1,9 +1,13 @@
+# pylint: disable=unexpected-keyword-arg
+
 import unittest
 from datetime import datetime
 from dataclasses import FrozenInstanceError, is_dataclass
 from category.domain.entities import Category
 
-#TDD - Triple AAA (Arrange, Act and Assert)
+# TDD - Triple AAA (Arrange, Act and Assert)
+
+
 class TestCategoryUnit(unittest.TestCase):
 
     def test_if_is_a_dataclass(self):

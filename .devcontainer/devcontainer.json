@@ -22,7 +22,8 @@
 
 	// Set *default* container specific settings.json values on container create.
 	"settings": {
-		"terminal.integrated.defaultProfile.linux": "zsh"
+		"terminal.integrated.defaultProfile.linux": "zsh",
+		"python.pythonPath": "/usr/local/bin/python"
 	},
 
 	// Add the IDs of extensions you want installed when the container is created.
@@ -37,7 +38,9 @@
 		"aemodio.gitlens",
 		"donjayamanne.githistory",
 		"vivaxy.vscode-conventional-commits",
-		"pkief.material-icon-theme"
+		"pkief.material-icon-theme",
+		"esbenp.prettier-vscode",
+		"bungcip.better-toml"
 	],
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
