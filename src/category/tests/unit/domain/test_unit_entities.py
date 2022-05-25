@@ -1,5 +1,6 @@
 # pylint: disable=unexpected-keyword-arg
 
+from unicodedata import category
 import unittest
 from datetime import datetime
 from dataclasses import FrozenInstanceError, is_dataclass
@@ -44,6 +45,22 @@ class TestCategoryUnit(unittest.TestCase):
         with self.assertRaises(FrozenInstanceError):
             value_object = Category(name='test')
             value_object.name = 'alter test name'
+
+    def test_update(self):
+        category = Category(name='Movie')
+        category.update('Documentary', 'some description')
+        self.assertEqual(category.name, 'Documentary')
+        self.assertEqual(category.description, 'some description')
+
+    def test_activate(self):
+        category = Category(name='Movie', is_active=False)
+        category.activate()
+        self.assertTrue(category.is_active)
+
+    def test_deactivate(self):
+        category = Category(name='Movie')
+        category.deactivate()
+        self.assertFalse(category.is_active)
 
 
 # TDD - Kent Beck (Circle: Create the Test >>> Fail >>> Success >>> Refactor)

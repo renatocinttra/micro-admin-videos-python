@@ -16,8 +16,11 @@
     ],
     "cSpell.ignoreWords": [
         "bungcip",
+        "dataclass",
         "esbenp",
-        "pkief"
+        "id",
+        "pkief",
+        "seedwork"
     ],
     "python.linting.pylintEnabled": true,
     "python.linting.enabled": true,
